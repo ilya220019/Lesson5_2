@@ -1,6 +1,7 @@
-package com.example.lesson5_2
+package com.example.lesson5_2.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class LoveModel(
@@ -11,4 +12,4 @@ data class LoveModel(
     var secondName: String,
     var percentage: String,
     var result: String
-)
+):Serializable

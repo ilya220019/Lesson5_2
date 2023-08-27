@@ -1,7 +1,8 @@
-package com.example.lesson5_2
+package com.example.lesson5_2.model
 
 
 
+import com.example.lesson5_2.model.LoveModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

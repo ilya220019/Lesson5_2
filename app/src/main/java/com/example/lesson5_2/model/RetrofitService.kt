@@ -1,4 +1,4 @@
-package com.example.lesson5_2
+package com.example.lesson5_2.model
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
