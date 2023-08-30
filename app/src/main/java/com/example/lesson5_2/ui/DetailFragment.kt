@@ -1,18 +1,17 @@
 package com.example.lesson5_2.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.lesson5_2.R
 import com.example.lesson5_2.ResultPresenter
 import com.example.lesson5_2.databinding.FragmentDetailBinding
 import com.example.lesson5_2.model.LoveModel
-import com.example.lesson5_2.model.RetrofitService
 import com.example.lesson5_2.view.ResultView
-import retrofit2.Call
-import retrofit2.Response
+
 
 class DetailFragment : Fragment(), ResultView {
 
@@ -30,6 +29,15 @@ class DetailFragment : Fragment(), ResultView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupUi()
+        initClicker()
+    }
+
+    private fun initClicker() {
+        with(binding){
+            btnHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
+            }
+        }
     }
 
     private fun setupUi() {

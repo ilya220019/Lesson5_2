@@ -27,4 +27,9 @@
         android:name="com.example.lesson5_2.ui.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lesson5_2.ui.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

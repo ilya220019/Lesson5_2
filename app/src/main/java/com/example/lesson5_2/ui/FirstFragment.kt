@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.example.lesson5_2.App
 import com.example.lesson5_2.Presenter
 import com.example.lesson5_2.R
 import com.example.lesson5_2.databinding.FragmentFirstBinding
@@ -42,6 +43,7 @@ class FirstFragment : Fragment(), LoveView {
     }
 
     override fun navigationToResultScreen(loveModel: LoveModel) {
+        App.appDatabase.loveDao().insert(loveModel)
         findNavController().navigate(R.id.detailFragment, bundleOf("key" to loveModel))
     }
 
