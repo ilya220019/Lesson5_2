@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import com.example.lesson5_2.App
 import com.example.lesson5_2.R
 import com.example.lesson5_2.databinding.FragmentHistoryBinding
+import com.example.lesson5_2.model.room.LoveDao
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class HistoryFragment : Fragment() {
 
     private lateinit var binding: FragmentHistoryBinding
+   @Inject lateinit var loveDao: LoveDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,7 +32,7 @@ class HistoryFragment : Fragment() {
     }
 
     private fun setupUi() {
-        val list = App.appDatabase.loveDao().getAll()
+        val list = loveDao.getAll()
 
         list.forEach{
 

@@ -5,5 +5,7 @@ import java.lang.Error
 
 interface LoveView {
     fun navigationToResultScreen(loveModel: LoveModel)
+    fun navigationToOnBoarding()
+
     fun showError(error: String)
 }

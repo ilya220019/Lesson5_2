@@ -13,12 +13,19 @@ import com.example.lesson5_2.Presenter
 import com.example.lesson5_2.R
 import com.example.lesson5_2.databinding.FragmentFirstBinding
 import com.example.lesson5_2.model.LoveModel
+import com.example.lesson5_2.model.room.LoveDao
 import com.example.lesson5_2.view.LoveView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
-class FirstFragment : Fragment(), LoveView {
+@AndroidEntryPoint
+class FirstFragment: Fragment(), LoveView {
     private lateinit var binding: FragmentFirstBinding
-    private val presenter = Presenter(this)
+    @Inject
+    lateinit var presenter: Presenter
+
+    @Inject
+    lateinit var loveDao: LoveDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +36,10 @@ class FirstFragment : Fragment(), LoveView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.attachView(this)
+        presenter.showOnBoarding()
         initClicker()
+
 
     }
 
@@ -42,9 +52,14 @@ class FirstFragment : Fragment(), LoveView {
         }
     }
 
+
     override fun navigationToResultScreen(loveModel: LoveModel) {
-        App.appDatabase.loveDao().insert(loveModel)
+        loveDao.insert(loveModel)
         findNavController().navigate(R.id.detailFragment, bundleOf("key" to loveModel))
+    }
+
+    override fun navigationToOnBoarding() {
+        findNavController().navigate(R.id.onBoardingFragment)
     }
 
     override fun showError(error: String) {
