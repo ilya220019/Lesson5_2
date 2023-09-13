@@ -38,6 +38,7 @@ class FirstFragment: Fragment(), LoveView {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
         presenter.showOnBoarding()
+
         initClicker()
 
 

@@ -35,4 +35,6 @@ class Presenter @Inject constructor(private val api: LoveApi) {
     fun attachView(view: LoveView){
         this.loveView = view
     }
+
+
 }
